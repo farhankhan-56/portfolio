@@ -1,0 +1,50 @@
+// Content the owner supplies. Empty values are hidden on the page, never shown as placeholders.
+const SITE = {
+  email: "",
+  github: "",
+  linkedin: "",
+  upwork: "",
+  web3formsKey: "f4c2b0a2-acd4-4272-8d4a-cd51eedfb194",
+  intro: "",
+  bio: [
+    "I'm Farhan Khan, an AI Automation and Agent Developer with a background in Computer Science and a strong interest in building practical AI powered solutions.",
+    "I focus on developing AI agents, automating business processes, and connecting different tools and services through APIs. My work involves turning ideas and business requirements into working systems that reduce repetitive tasks, improve efficiency, and make everyday operations easier.",
+    "I work with technologies such as n8n, AI models, APIs, and web development tools to build automation workflows and intelligent applications. I also use AI assisted development tools to plan, build, test, and improve solutions."
+  ],
+  skills: {
+    "AI and Agents": [
+      { name: "Agentic AI" }, { name: "Multi-agent systems" },
+      { name: "Prompt engineering" }, { name: "Tool calling" },
+      { name: "Knowledge bases and RAG" }
+    ],
+    "Automation": [
+      { name: "n8n" }, { name: "Workflow automation" },
+      { name: "Webhooks" }
+    ],
+    "Web": [
+      { name: "HTML" }, { name: "CSS" },
+      { name: "JavaScript" }, { name: "React" }, { name: "Node.js" }, { name: "Express.js" }
+    ],
+    "Programming and Data": [
+      { name: "Python", }, { name: "JSON", }
+    ],
+    "APIs": [{ name: "REST APIs" }],
+    "Tools": [{ name: "Git and GitHub" }]
+  }
+};
+const SERVICES = [
+  { title: "AI Agent Development", text: "Agents that read requests, call tools and finish tasks for your team." },
+  { title: "Workflow Automation", text: "Connect your apps so repeat work runs on its own." },
+  { title: "API Integrations", text: "Link your tools and data sources so they share information reliably." },
+  { title: "Chatbots and Assistants", text: "Assistants that answer questions and hand off to you when needed." },
+  { title: "Website Development", text: "Fast, mobile-friendly websites and web dashboards, built from design to launch." }
+];
+// status must be one of: Completed, Practice, University Project, Upcoming
+const PROJECTS = [
+  { name: "Job Finder Agent", status: "Completed", short: "An agent that finds online jobs on three platforms from a job title or a CV, and filters out fake jobs.", problem: "Looking for jobs by hand takes a lot of time, and fake job postings are mixed in with real ones.", solution: "You give a job title or upload your CV, and the agent searches three platforms for matching online jobs. It filters out fake jobs, so the results are legitimate and give you a better chance of getting the job.", features: ["Search by job title", "Search by uploading a CV", "Searches three job platforms automatically", "Filters out fake jobs so only legitimate ones remain"], tools: [], role: "", lessons: "", images: [], links: { live: "", github: "", demo: "" } },
+  { name: "Multi-Agent Sales Orchestration", status: "completed", short: "Eight AI agents, led by a supervisor agent, that handle sales research, call prep, notes, CRM updates, proposal review and forecasting.", problem: "Sales teams lose a large share of their week to work that is not selling: researching prospects, writing call plans and notes, updating the CRM, reviewing proposals and building forecasts.", solution: "Eight cooperating AI agents built in n8n. Seven specialists each do one job, and a Sales Supervisor takes a request in plain language, calls the right agents in order and returns one answer. A pipeline forecast is also emailed every Friday at 5:00 PM.", features: ["Company research from the web", "Discovery call plans with agenda, questions and objection handling", "Meeting summaries with pain points, risks and action items", "Executive summaries of deal health", "CRM deal records created or updated automatically", "Proposal review with an alignment score and gaps", "Weekly sales forecast emailed every Friday at 5:00 PM", "One supervisor agent that coordinates all of them from a chat message"], tools: [], role: "", lessons: "", images: [], links: { live: "", github: "", demo: "" } },
+  { name: "AI Support KB System", status: "completed", short: "A customer support chat assistant that answers only from company documents, cites its sources and hands complex cases to a human team.", problem: "Customers need quick answers from company policies, manuals and FAQs, and questions that need a person, such as complaints or billing problems, must reach the support team.", solution: "Two n8n workflows share one knowledge base. An administrator uploads documents, which are indexed for search. The chat assistant then answers only from those documents and cites the source. Complaints, billing problems and questions the documents cannot answer are handed to the human team with an email alert.", features: ["Answers only from the company's own documents, never inventing policies or prices", "Source citation on every answer", "Admin upload of PDF, DOCX or TXT files, where a re-upload replaces the old version", "Automatic sorting of standard questions and ones that need a human", "Escalation to the support team with an email alert", "Bot stays silent for escalated customers until the team releases them", "Remembers the last 8 messages of each chat", "A log of every message"], tools: [], role: "", lessons: "", images: [], links: { live: "", github: "", demo: "" } },
+  { name: "Task Flow", status: "University Project", short: "My final year project: a daily task manager app that shows analytics on completed and incomplete tasks.", problem: "Keeping track of daily tasks and finishing them on time is hard without a system that shows what is done, what is not, and what matters most.", solution: "Task Flow is a daily task manager where you add your daily tasks and monitor them along with your daily activities. Its analytics show how many tasks are completed and how many are not, and which tasks are more or less important. This helps a person get their work done and stay punctual.", features: ["Add your daily tasks", "Monitor daily tasks and daily activities", "Analytics of completed and not completed tasks", "Shows which tasks are more important and which are less important"], tools: [], role: "I designed the Task Flow app as my final year project.", lessons: "", images: [], links: { live: "", github: "", demo: "" } },
+  { name: "AI Lead Management Agent", short: "An automated sales assistant that captures leads, scores them with AI, drafts outreach emails for approval, sends them and follows up.", problem: "Handling new leads by hand means checking each one for duplicates, judging which are worth chasing, writing personal emails and remembering to follow up.", solution: "Five connected n8n workflows share a Supabase database. A new lead is validated, checked for duplicates and scored 0 to 100 by AI. High-priority leads trigger an alert and an AI-written first email. A sales rep approves or rejects that email before it is sent through Gmail. If the lead does not reply, the system drafts follow-ups.", features: ["Lead capture through a public webhook", "Email validation and duplicate detection", "AI lead scoring from 0 to 100, with priority, summary and next action", "Instant alerts for high-priority leads", "AI-written outreach emails saved as Gmail drafts", "A human approval step, where a rep approves (with edits) or rejects before anything is sent", "Safe sending with daily limits, opt-out checks and no double sends", "Automatic follow-ups at 9 AM local time", "A full activity log for every lead"], tools: [], role: "", lessons: "", images: [], links: { live: "", github: "", demo: "" } },
+  { name: "AI Lead Management Website", short: "A web dashboard to run the AI Lead Management Agent from one place: add leads, review AI email drafts, approve or reject them and track activity.", problem: "Without a website, running the lead agent day to day means opening Supabase and n8n directly.", solution: "A web dashboard where a sales rep signs in, adds leads, sees the AI score and priority, reviews and edits the AI-written email, and approves or rejects it in one click. The site reads and writes the agent's Supabase database with row-level security, and calls the n8n workflows only through secure server routes, so no secret keys reach the browser.", features: ["Secure sign-in with email and password", "New lead form that shows the AI score and priority straight away", "Leads list with score, priority, status and AI summary, with filters", "Review, edit, approve or reject the AI-drafted email in one click", "Request a new draft when none exists", "Activity timeline and send status for each lead", "Opt-out switch for each contact", "Sender view with the daily send limit, and editable business settings", "Works on phones and desktop screens"], tools: [], role: "", lessons: "", images: [], links: { live: "", github: "", demo: "" } }
+];

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Farhan Khan | AI Automation and Agent Developer</title>
+  <meta name="description"
+    content="Farhan Khan builds AI-powered agents and workflow automations that help businesses work smarter. See projects, services and how to get in touch.">
+  <meta property="og:title" content="Farhan Khan | AI Automation and Agent Developer">
+  <meta property="og:description" content="AI-powered agents and workflow automations for businesses.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/img/og.png">
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; img-src 'self' data:; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src https://api.web3forms.com; frame-src https://www.youtube.com https://www.loom.com; base-uri 'self'; form-action 'none'">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Space+Grotesk:wght@500;700&display=swap">
+  <link rel="stylesheet" href="css/style.css?v=5">
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="#home">Farhan Khan</a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu">☰</button>
+    <nav id="nav" aria-label="Main">
+      <a href="#about">About</a><a href="#services">Services</a><a href="#projects">Projects</a>
+      <a href="#skills">Skills</a><a href="#contact">Contact</a>
+    </nav>
+  </header>
+  <main id="main">
+    <section id="home" class="hero">
+      <div class="hero-text">
+        <p class="role">AI Automation and Agent Developer</p>
+        <h1>I Build AI Powered Agents and Workflow Automations That Help Businesses Work Smarter.</h1>
+        <p id="intro" class="lead"></p>
+        <div class="btns">
+          <a class="btn primary" href="#projects">View My Projects</a>
+          <a class="btn" href="#contact">Contact Me</a>
+          <a class="btn" id="cvBtn" href="assets/cv/Farhan_Khan_CV.pdf" download>Download CV</a>
+        </div>
+        <p class="social" id="heroSocial"></p>
+      </div>
+      <img class="photo" id="photo" src="assets/img/profile.webp" width="360" height="360"
+        alt="Portrait of Farhan Khan">
+    </section>
+
+    <section id="about">
+      <h2>About</h2>
+      <div id="bio" class="bio"></div>
+    </section>
+
+    <section id="services">
+      <h2>Services</h2>
+      <div class="grid" id="serviceList"></div>
+    </section>
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="grid" id="projectGrid"></div>
+    </section>
+    <section id="skills">
+      <h2>Skills</h2>
+      <div id="skillGroups"></div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Have a project in mind? Let's discuss how AI automation can help your business.</p>
+      <form id="contactForm" novalidate>
+        <label for="name">Name</label><input id="name" name="name" autocomplete="name">
+        <p class="err" id="err-name" role="alert"></p>
+        <label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email">
+        <p class="err" id="err-email" role="alert"></p>
+        <label for="message">Message</label><textarea id="message" name="message" rows="5"></textarea>
+        <p class="err" id="err-message" role="alert"></p>
+        <input type="checkbox" name="botcheck" id="botcheck" class="hp" tabindex="-1" autocomplete="off"
+          aria-hidden="true">
+        <button class="btn primary" type="submit" id="sendBtn">Send message</button>
+        <p id="formStatus" role="status"></p>
+      </form>
+      <p class="social" id="contactLinks"></p>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2026 Farhan Khan</p>
+  </footer>
+  <button id="toTop" class="to-top" aria-label="Back to top" hidden>Top</button>
+
+  <dialog id="projectDialog" aria-labelledby="dlgTitle">
+    <button class="close" id="dlgClose" aria-label="Close details">Close</button>
+    <div id="dlgBody"></div>
+  </dialog>
+  <script src="js/projects.js?v=2"></script>
+  <script src="js/main.js?v=4"></script>
+</body>
+
+</html>
