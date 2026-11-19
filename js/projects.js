@@ -7,26 +7,19 @@ const SITE = {
   web3formsKey: "f4c2b0a2-acd4-4272-8d4a-cd51eedfb194",
   intro: "",
   bio: [
-    "I'm Farhan Khan, an AI Automation and Agent Developer with a background in Computer Science and a strong interest in building practical AI powered solutions.",
+    "I'm Farhan Khan, an AI Automation and Agent Developer, with a strong interest in building practical AI powered solutions.",
     "I focus on developing AI agents, automating business processes, and connecting different tools and services through APIs. My work involves turning ideas and business requirements into working systems that reduce repetitive tasks, improve efficiency, and make everyday operations easier.",
     "I work with technologies such as n8n, AI models, APIs, and web development tools to build automation workflows and intelligent applications. I also use AI assisted development tools to plan, build, test, and improve solutions."
   ],
   skills: {
-    "AI and Agents": [
+    "AI Agents and Automation": [
       { name: "Agentic AI" }, { name: "Multi-agent systems" },
-      { name: "Prompt engineering" }, { name: "Tool calling" },
-      { name: "Knowledge bases and RAG" }
-    ],
-    "Automation": [
-      { name: "n8n" }, { name: "Workflow automation" },
+      { name: "Knowledge bases and RAG system" }, { name: "n8n workflows automation" },
       { name: "Webhooks" }
     ],
     "Web": [
       { name: "HTML" }, { name: "CSS" },
       { name: "JavaScript" }, { name: "React" }, { name: "Node.js" }, { name: "Express.js" }
-    ],
-    "Programming and Data": [
-      { name: "Python", }, { name: "JSON", }
     ],
     "APIs": [{ name: "REST APIs" }],
     "Tools": [{ name: "Git and GitHub" }]

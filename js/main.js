@@ -48,7 +48,7 @@
 
   function openProjectDialog(i) {
     const p = withProjectDefaults(PROJECTS[i]), body = $("#dlgBody");
-    body.replaceChildren(el("h2", { id: "dlgTitle", textContent: p.name }), el("span", { className: "badge", textContent: p.status }));
+    body.replaceChildren(el("h2", { id: "dlgTitle", textContent: p.name }));
     [["Problem", p.problem], ["Solution", p.solution], ["My contribution", p.role], ["Lessons learned", p.lessons]].forEach(([h, t]) => { if (t) body.append(el("h3", { textContent: h }), el("p", { textContent: t })); });
     if (p.features.length) { const ul = el("ul"); p.features.forEach((f) => ul.append(el("li", { textContent: f }))); body.append(el("h3", { textContent: "Features" }), ul); }
     if (p.tools.length) body.append(el("h3", { textContent: "Tools" }), el("p", { textContent: p.tools.join(", ") }));
