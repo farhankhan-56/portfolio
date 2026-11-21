@@ -1,7 +1,7 @@
 // Content the owner supplies. Empty values are hidden on the page, never shown as placeholders.
 const SITE = {
-  github: "",
-  linkedin: "www.linkedin.com/in/farhan-khan5665",
+  github: "https://github.com/farhankhan-56",
+  linkedin: "https://www.linkedin.com/in/farhan-khan5665/",
   upwork: "",
   web3formsKey: "f4c2b0a2-acd4-4272-8d4a-cd51eedfb194",
   intro: "",
