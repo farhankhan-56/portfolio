@@ -722,6 +722,10 @@ footer {
         grid-column: 1
     }
 
+    #contact {
+        grid-template-columns: 1fr
+    }
+
     #contact h2 {
         grid-row: auto
     }
