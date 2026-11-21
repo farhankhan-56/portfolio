@@ -13,15 +13,14 @@
     if (SITE.intro) $("#intro").textContent = SITE.intro; else $("#intro").hidden = true;
     SITE.bio.forEach((t) => $("#bio").append(el("p", { textContent: t })));
     socialLinks($("#heroSocial")); socialLinks($("#contactLinks"));
-    SERVICES.forEach((s) => $("#serviceList").append(el("article", { className: "card" }, [el("h3", { textContent: s.title }), el("p", { textContent: s.text })])));
+    SERVICES.forEach((s) => $("#serviceList").append(el("li", { className: "item" }, [el("h3", { textContent: s.title })])));
     const groups = $("#skillGroups");
     let any = false;
     Object.entries(SITE.skills).forEach(([g, items]) => {
       if (!items.length) return;
       any = true;
-      const wrap = el("div", { className: "tags" });
-      items.forEach((i) => wrap.append(el("span", { className: "chip" }, [i.name, el("small", { textContent: i.level })])));
-      groups.append(el("h3", { textContent: g }), wrap);
+      const names = items.map((i) => i.level ? i.name + " (" + i.level + ")" : i.name).join(", ");
+      groups.append(el("div", { className: "item" }, [el("h3", { textContent: g }), el("p", { textContent: names })]));
     });
     if (!any) { $("#skills").hidden = true; document.querySelector('#nav a[href="#skills"]').hidden = true; }
     const photo = $("#photo");
@@ -31,19 +30,46 @@
   const PROJECT_DEFAULTS = { short: "", problem: "", solution: "", features: [], tools: [], role: "", lessons: "", images: [], links: {} };
   const withProjectDefaults = (project) => ({ ...PROJECT_DEFAULTS, ...project, links: { ...project.links } });
 
+    const projectNumber = (i) => String(i + 1).padStart(2, "0");
+
+  function projectLinks(p, i) {
+    const links = el("div", { className: "links" });
+    [["live", "Live"], ["github", "GitHub"], ["demo", "Demo"]].forEach(([k, n]) => { if (p.links[k]) links.append(ext(p.links[k], n)); });
+    links.append(el("button", { className: "btn", type: "button", textContent: "View details", onclick: () => openProjectDialog(i) }));
+    return links;
+  }
+
+  function featureCard(p, i, flip) {
+    const shot = p.images[0];
+    const text = el("div", { className: "feature-text" }, [
+      el("p", { className: "label", textContent: projectNumber(i) }),
+      el("h3", { textContent: p.name }),
+      el("p", { textContent: p.short }),
+      projectLinks(p, i)
+    ]);
+    const kids = shot ? [el("img", { src: shot.src, alt: shot.alt, loading: "lazy" }), text] : [text];
+    return el("article", { className: "feature" + (flip ? " flip" : "") }, kids);
+  }
+
+  function indexRow(p, i) {
+    const shot = p.images[0];
+    const row = el("button", { className: "row", type: "button", onclick: () => openProjectDialog(i) }, [
+      el("span", { className: "label", textContent: projectNumber(i) }),
+      el("span", { className: "row-name", textContent: p.name }),
+      el("span", { className: "row-short", textContent: p.short })
+    ]);
+    if (shot) row.append(el("img", { className: "thumb", src: shot.src, alt: "", loading: "lazy" }));
+    return el("li", {}, [row]);
+  }
+
   function renderProjects() {
-    const grid = $("#projectGrid");
+    const grid = $("#projectGrid"), index = el("ol", { className: "index" });
+    let featuredCount = 0;
     PROJECTS.map(withProjectDefaults).forEach((p, i) => {
-      const card = el("article", { className: "card" + (p.status === "Upcoming" ? " muted" : "") });
-      card.append(el("h3", { textContent: p.name }));
-      if (p.short) card.append(el("p", { textContent: p.short }));
-      if (p.tools.length) { const ul = el("ul", { className: "tags" }); p.tools.forEach((t) => ul.append(el("li", { textContent: t }))); card.append(ul); }
-      const links = el("div", { className: "links" });
-      [["live", "Live"], ["github", "GitHub"], ["demo", "Demo"]].forEach(([k, n]) => { if (p.links[k]) links.append(ext(p.links[k], n)); });
-      if (p.status !== "Upcoming") links.append(el("button", { className: "btn", textContent: "View details", onclick: () => openProjectDialog(i) }));
-      card.append(links);
-      grid.append(card);
+      if (!p.featured) { index.append(indexRow(p, i)); return; }
+      grid.append(featureCard(p, i, featuredCount++ % 2 === 1));
     });
+    grid.append(index);
   }
 
   function openProjectDialog(i) {
@@ -55,12 +81,6 @@
     p.images.forEach((im) => body.append(el("img", { src: im.src, alt: im.alt, loading: "lazy" })));
     if (p.links.demo) body.append(el("p", {}, [ext(p.links.demo, "Watch the demo")]));
     $("#projectDialog").showModal();
-  }
-
-  function revealOnScroll() {
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) return;
-    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: 0.1 });
-    document.querySelectorAll("main section:not(.hero)").forEach((s) => { s.classList.add("reveal"); io.observe(s); });
   }
 
   function activeNav() {
@@ -120,7 +140,7 @@
   }
 
   function init() {
-    fillContent(); renderProjects(); revealOnScroll(); activeNav(); menuToggle();
+    fillContent(); renderProjects(); activeNav(); menuToggle();
 
     $("#contactForm").addEventListener("submit", submitForm);
     const dlg = $("#projectDialog");
